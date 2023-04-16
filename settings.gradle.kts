@@ -13,4 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ComposeVideoPlayer"
-include ':app'
+include(":app")
+include(":libraries:room-lib")
+include(":libraries:ui-base-lib")
+include(":features:base")
+include(":features:home")
