@@ -11,7 +11,7 @@
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.SplashScreenApp">
-        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <item name="android:windowBackground">@color/color_primary</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/bg_splash_12</item>
         <item name="android:windowSplashScreenAnimationDuration">800</item>
     </style>

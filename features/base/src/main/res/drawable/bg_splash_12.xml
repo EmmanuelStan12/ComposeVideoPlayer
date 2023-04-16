@@ -5,11 +5,11 @@
         <color android:color="@color/color_primary" />
     </item>
 
-    <item android:drawable="@drawable/ic_splash_icon"
+    <item android:drawable="@drawable/splash_icon"
         android:gravity="center"
         android:tint="@color/color_on_primary"
-        android:width="100dp"
-        android:height="100dp"
+        android:width="240dp"
+        android:height="240dp"
         />
 
 </layer-list>
