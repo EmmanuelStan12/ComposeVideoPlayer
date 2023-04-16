@@ -2,7 +2,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 object Dependencies {
     val compileSDK = 33
-    val minSDK = 21
+    val minSDK = 23
     val targetSDK = 33
     val versionCode = 1
     val versionName = "1.0.0"
@@ -42,7 +42,7 @@ object Dependencies {
     val accompanistpager = "com.google.accompanist:accompanist-pager:0.25.1"
     val accompanistpagerindicators = "com.google.accompanist:accompanist-pager-indicators:0.25.0"
 
-    val splashscreen = "androidx.core:core-splashscreen:1.1.0-alpha01"
+    val splashscreen = "androidx.core:core-splashscreen:1.0.0"
 
     private val ktor_v = "2.0.2"
     val ktorclientcore = "io.ktor:ktor-client-core:$ktor_v"

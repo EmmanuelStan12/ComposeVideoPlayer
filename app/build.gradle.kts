@@ -52,15 +52,13 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.core)
-    implementation(Dependencies.composeui)
-    implementation(Dependencies.composeactivity)
-    implementation(Dependencies.composeicons)
-    implementation(Dependencies.composejunit)
-    implementation(Dependencies.composepreview)
-    implementation(Dependencies.composenavigation)
-    implementation(Dependencies.composematerial)
-    implementation(Dependencies.appcompat)
-    implementation(Dependencies.timber)
 
+    implementation(project(mapOf("path" to ":features:base")))
+    implementation(project(mapOf("path" to ":features:home")))
+
+    implementation(project(mapOf("path" to ":libraries:ui-base-lib")))
+    implementation(project(mapOf("path" to ":libraries:room-lib")))
+
+
+    implementation(Dependencies.splashscreen)
 }
