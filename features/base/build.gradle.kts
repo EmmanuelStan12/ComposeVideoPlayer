@@ -24,6 +24,11 @@ android {
             isMinifyEnabled = Dependencies.isMinifyEnabled
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
+
+        debug {
+            isMinifyEnabled = false
+            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+        }
     }
 
     compileOptions {
@@ -49,11 +54,15 @@ dependencies {
     api(Dependencies.composeicons)
     api(Dependencies.composejunit)
     api(Dependencies.composepreview)
+    api(Dependencies.composetooling)
     api(Dependencies.composenavigation)
     api(Dependencies.composematerial)
     api(Dependencies.appcompat)
     api(Dependencies.timber)
 
     api(project(mapOf("path" to ":libraries:ui-base-lib")))
+
+    debugApi(Dependencies.customview)
+    debugApi(Dependencies.customviewcontainer)
 
 }

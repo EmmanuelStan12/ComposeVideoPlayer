@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.ComposeVideoPlayer" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/color_primary</item>
+        <item name="android:statusBarColor">@color/white</item>
     </style>
 
     <style name="Theme.SplashScreenApp" parent="android:Theme.Material.Light.NoActionBar">

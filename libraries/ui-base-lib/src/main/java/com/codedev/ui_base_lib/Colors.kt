@@ -11,7 +11,7 @@ val ColorSecondary = Color(0xFFE21D53)
 val ColorOnSecondary = Color(0xFFE21D53)
 val ColorTertiary = Color(0xFFE2AC1D)
 val ColorWhiteBackground = Color(0xFFFFFFFF)
-val ColorBlackText = Color(0xFFFFFFFF)
+val ColorBlackText = Color(0xFF333300)
 val ColorWhiteText = Color(0xFFFFFFFF)
 val ColorOnBackground = Color(0xFFFFFFFF)
 val ColorOnPrimary = Color(0xFFFFFFFF)
@@ -20,6 +20,8 @@ val ColorBlack = Color(0xFF0C0C0C)
 val ColorSurfaceLight = Color(0xFFFFFFFF)
 val ColorSurfaceDark = Color(0xFFFFFFFF)
 val ColorOnSurface = Color(0xFFFFFFFF)
+val ColorLightGrey = Color(0xFFD3D3D3)
+val ColorGrey = Color(0xFFFFFFFF)
 
 val LightThemeColors = lightColors(
     primary = ColorPrimary,

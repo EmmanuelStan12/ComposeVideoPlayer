@@ -26,6 +26,9 @@ object Dependencies {
     val composetooling = "androidx.compose.ui:ui-tooling:$compose_v"
     val composeicons = "androidx.compose.material:material-icons-extended:$compose_v"
 
+    val customview = "androidx.customview:customview:1.2.0-alpha01"
+    val customviewcontainer = "androidx.customview:customview-poolingcontainer:1.0.0-alpha01"
+
     val composenavigation = "androidx.navigation:navigation-compose:2.5.1"
 
     private val lifecycle_compose_v = "2.5.1"
@@ -134,9 +137,16 @@ object Dependencies {
         depends.forEach { dependency -> add("implementation", dependency) }
     }
 
+    fun DependencyHandler.debugImplementation(vararg depends:String){
+        depends.forEach { dependency -> add("debugImplementation", dependency) }
+    }
+
+//    fun DependencyHandler.debugApi(vararg depends:String){
+//        depends.forEach { dependency -> add("debugApi", dependency) }
+//    }
+
     fun DependencyHandler.addTestDependencies(){
         add("testImplementation", testjunit)
-
     }
 
     fun DependencyHandler.addAndroidTestDependencies(){

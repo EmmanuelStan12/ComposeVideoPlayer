@@ -46,40 +46,78 @@ val Lato = FontFamily(
     ),
 )
 
-val LatoTypography = Typography(
-    defaultFontFamily = Lato,
+val Roboto = FontFamily(
+    Font(
+        R.font.roboto_bold,
+        weight = FontWeight.Bold,
+        style = FontStyle.Normal
+    ),
+    Font(
+        R.font.roboto_italic,
+        weight = FontWeight.Black,
+        style = FontStyle.Normal
+    ),
+    Font(
+        R.font.roboto_light,
+        weight = FontWeight.Light,
+        style = FontStyle.Normal
+    ),
+    Font(
+        R.font.roboto_italic,
+        weight = FontWeight.Normal,
+        style = FontStyle.Italic
+    ),
+    Font(
+        R.font.roboto_regular,
+        weight = FontWeight.Normal,
+        style = FontStyle.Normal
+    ),
+    Font(
+        R.font.roboto_thin,
+        weight = FontWeight.Thin,
+        style = FontStyle.Normal
+    ),
+    Font(
+        R.font.roboto_lightitalic,
+        weight = FontWeight.Light,
+        style = FontStyle.Normal
+    ),
+)
+
+val RobotoTypography = Typography(
+    defaultFontFamily = Roboto,
     h1 = TextStyle(
-        color = ColorWhiteText,
+        color = ColorBlackText,
         fontSize = 32.sp,
         fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal
     ),
     h2 = TextStyle(
-        color = ColorWhiteText,
+        color = ColorBlackText,
         fontSize = 28.sp,
         fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal
     ),
     h3 = TextStyle(
-        color = ColorWhiteText,
+        color = ColorBlackText,
         fontSize = 24.sp,
         fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal
     ),
     body1 = TextStyle(
-        color = ColorWhiteText,
+        color = ColorBlackText,
         fontSize = 18.sp,
         fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal
     ),
     body2 = TextStyle(
-        color = ColorWhiteText,
+        color = ColorBlackText,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal
     ),
     caption = TextStyle(
-        color = ColorWhiteText,
+        color = ColorBlackText,
         fontSize = 14.sp,
         fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal

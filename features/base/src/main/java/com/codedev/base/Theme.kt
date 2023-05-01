@@ -3,10 +3,7 @@ package com.codedev.base
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import com.codedev.ui_base_lib.DarkThemeColors
-import com.codedev.ui_base_lib.LatoTypography
-import com.codedev.ui_base_lib.LightThemeColors
-import com.codedev.ui_base_lib.Shapes
+import com.codedev.ui_base_lib.*
 
 @Composable
 fun DefaultTheme(
@@ -18,7 +15,7 @@ fun DefaultTheme(
 
     MaterialTheme(
         colors = colors,
-        typography = LatoTypography,
+        typography = RobotoTypography,
         shapes = Shapes,
     ) {
         content()

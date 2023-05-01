@@ -5,19 +5,25 @@ plugins {
 
 android {
     namespace = "com.codedev.ui_base_lib"
-    compileSdk = 32
+    compileSdk = Dependencies.compileSDK
 
     defaultConfig {
-        minSdk = 23
-        targetSdk = 32
+        minSdk = Dependencies.minSDK
+        targetSdk = Dependencies.targetSDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
+
+        debug {
+            isMinifyEnabled = Dependencies.isMinifyEnabled
+            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+        }
+
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = Dependencies.isMinifyEnabled
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -37,4 +43,5 @@ dependencies {
 
     implementation(Dependencies.composematerial)
     implementation(Dependencies.composeui)
+    implementation(Dependencies.composeicons)
 }

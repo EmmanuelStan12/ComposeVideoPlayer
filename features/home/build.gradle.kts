@@ -22,6 +22,11 @@ android {
 
     buildTypes {
 
+        debug {
+            isMinifyEnabled = false
+            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+        }
+
         release {
             isMinifyEnabled = Dependencies.isMinifyEnabled
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")

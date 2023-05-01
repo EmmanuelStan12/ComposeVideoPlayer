@@ -23,9 +23,10 @@ class SplashActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         lifecycleScope.launchWhenCreated {
-            delay(3000.milliseconds)
+            delay(2000.milliseconds)
 
             Intent(HOME_ACTIVITY).also {
+                it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(it)
             }
         }
