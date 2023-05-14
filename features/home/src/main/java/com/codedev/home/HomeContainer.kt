@@ -1,28 +1,26 @@
 package com.codedev.home
 
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.codedev.base.DrawerNavigation
+import com.codedev.base.composables.DrawerNavigation
 import com.codedev.home.folders.FolderComposable
 import com.codedev.home.folders.FolderTopAppBar
 import com.codedev.home.offers.OfferComposable
 import com.codedev.home.offers.OfferTopAppBar
 import com.codedev.screens.home.HomeScreen
 import com.codedev.screens.home.bottomBarItems
+import com.codedev.storage_lib.VideoContentProvider
 import com.codedev.ui_base_lib.ColorLightGrey
 import kotlinx.coroutines.launch
 
@@ -40,15 +38,16 @@ fun HomeContainer() {
     val currentDestination = navBackStackEntry?.destination
     val currentRoute = currentDestination?.route
     val scaffoldState = rememberScaffoldState()
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = true) {
+        VideoContentProvider.getVideoFolders(context)
+    }
 
     Scaffold(
         topBar = {
             if (currentRoute == HomeScreen.Offers.route)
-                OfferTopAppBar {
-                    scope.launch {
-                        scaffoldState.drawerState.open()
-                    }
-                }
+                OfferTopAppBar()
             else
                 FolderTopAppBar {
                     scope.launch {
@@ -60,6 +59,7 @@ fun HomeContainer() {
                         DrawerNavigation()
         },
         scaffoldState = scaffoldState,
+        drawerShape = RoundedCornerShape(topEnd = 16.dp, bottomEnd = 16.dp),
         bottomBar = {
             BottomNavigation(
                 backgroundColor = MaterialTheme.colors.background,

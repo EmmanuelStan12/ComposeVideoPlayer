@@ -15,17 +15,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.codedev.base.TopAppBarActionButton
 import com.codedev.home.R
 import com.codedev.ui_base_lib.ColorBlackText
 import com.codedev.base.R as base_R
 
+@Preview
 @Composable
-fun OfferTopAppBar(
-    onNavigate: () -> Unit
-) {
+fun OfferTopAppBar() {
     var dropDownMenuExpanded by remember {
         mutableStateOf(false)
     }
@@ -34,13 +40,31 @@ fun OfferTopAppBar(
         title = {
             Row(
                 modifier = Modifier.fillMaxSize(),
-                horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(painter = painterResource(base_R.drawable.ic_splash_icon), contentDescription = null,
-                    modifier = Modifier.size(24.dp)
+                Text(
+                    buildAnnotatedString {
+                        withStyle(
+                            SpanStyle (
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 24.sp,
+                                letterSpacing = 1.sp
+                            )
+                        ) {
+                            append("VX")
+                        }
+                        withStyle(
+                            SpanStyle(
+                                fontStyle = FontStyle.Italic,
+                                textDecoration = TextDecoration.Underline,
+                                fontSize = 22.sp,
+                                letterSpacing = 2.sp
+                            )
+                        ) {
+                            append("Player")
+                        }
+                    }
                 )
-
             }
         },
         navigationIcon = {

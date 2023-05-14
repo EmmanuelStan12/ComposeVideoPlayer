@@ -57,10 +57,14 @@ dependencies {
     api(Dependencies.composetooling)
     api(Dependencies.composenavigation)
     api(Dependencies.composematerial)
+    api(Dependencies.constraintlayout)
+    api(Dependencies.material)
     api(Dependencies.appcompat)
     api(Dependencies.timber)
 
     api(project(mapOf("path" to ":libraries:ui-base-lib")))
+    api(project(mapOf("path" to ":libraries:room-lib")))
+    api(project(mapOf("path" to ":libraries:storage-lib")))
 
     debugApi(Dependencies.customview)
     debugApi(Dependencies.customviewcontainer)

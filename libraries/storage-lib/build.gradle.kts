@@ -1,11 +1,10 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
-    namespace = "com.codedev.room_lib"
+    namespace = "com.codedev.storage_lib"
     compileSdk = Dependencies.compileSDK
 
     defaultConfig {
@@ -35,9 +34,8 @@ android {
 }
 
 dependencies {
-
-    implementation(Dependencies.room)
-    implementation(Dependencies.room_runtime)
-    kapt(Dependencies.room_kapt)
+    implementation(Dependencies.core)
+    implementation(Dependencies.coroutinecore)
+    implementation(Dependencies.coroutines_android)
     implementation(Dependencies.timber)
 }

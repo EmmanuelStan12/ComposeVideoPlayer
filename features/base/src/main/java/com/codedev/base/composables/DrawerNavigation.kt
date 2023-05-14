@@ -1,7 +1,6 @@
-package com.codedev.base
+package com.codedev.base.composables
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,10 +13,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.codedev.base.R
 import com.codedev.ui_base_lib.MediumSpace
 import com.codedev.ui_base_lib.SmallSpace
 
@@ -26,17 +32,47 @@ import com.codedev.ui_base_lib.SmallSpace
 fun DrawerNavigation() {
     Column(
         modifier = Modifier
-            .fillMaxWidth(0.8f)
+            .fillMaxWidth()
             .fillMaxHeight()
             .background(MaterialTheme.colors.background)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.icon_header),
-            contentDescription = null,
-            modifier = Modifier
-                .size(150.dp)
-                .padding(start = MediumSpace),
-            contentScale = ContentScale.Fit
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_splash_icon),
+                contentDescription = null,
+                modifier = Modifier.size(54.dp)
+            )
+            Text(
+                buildAnnotatedString {
+                    withStyle(
+                        SpanStyle (
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 24.sp,
+                            letterSpacing = 1.sp
+                        )
+                    ) {
+                        append("VX")
+                    }
+                    withStyle(
+                        SpanStyle(
+                            fontStyle = FontStyle.Italic,
+                            textDecoration = TextDecoration.Underline,
+                            fontSize = 22.sp,
+                            letterSpacing = 2.sp
+                        )
+                    ) {
+                        append("Player")
+                    }
+                }
+            )
+        }
+        Divider(
+            Modifier.height(1.dp)
+                .background(MaterialTheme.colors.primary)
         )
         Spacer(modifier = Modifier.height(MediumSpace))
         Row(
@@ -76,7 +112,6 @@ fun DrawerRowOption(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Surface(
             modifier = Modifier
-                .size(48.dp)
                 .clickable { onClick() },
             shape = CircleShape,
             elevation = 4.dp
@@ -86,7 +121,7 @@ fun DrawerRowOption(
                 contentDescription = null,
                 tint = MaterialTheme.colors.primary,
                 modifier = Modifier
-                    .size(24.dp)
+                    .padding(8.dp)
                     .align(CenterHorizontally)
             )
         }

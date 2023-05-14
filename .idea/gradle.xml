@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/room-lib" />
+            <option value="$PROJECT_DIR$/libraries/storage-lib" />
             <option value="$PROJECT_DIR$/libraries/ui-base-lib" />
           </set>
         </option>
