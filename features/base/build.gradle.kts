@@ -65,6 +65,7 @@ dependencies {
     api(project(mapOf("path" to ":libraries:ui-base-lib")))
     api(project(mapOf("path" to ":libraries:room-lib")))
     api(project(mapOf("path" to ":libraries:storage-lib")))
+    api(project(mapOf("path" to ":libraries:data-lib")))
 
     debugApi(Dependencies.customview)
     debugApi(Dependencies.customviewcontainer)

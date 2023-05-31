@@ -37,7 +37,7 @@ android {
 dependencies {
 
     implementation(Dependencies.room)
-    implementation(Dependencies.room_runtime)
+    api(Dependencies.room_runtime)
     kapt(Dependencies.room_kapt)
     implementation(Dependencies.timber)
 }

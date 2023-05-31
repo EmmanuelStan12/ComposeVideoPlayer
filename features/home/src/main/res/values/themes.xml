@@ -3,6 +3,6 @@
 
     <style name="Theme.ComposeVideoPlayer" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/color_white_background</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

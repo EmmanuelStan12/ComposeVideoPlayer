@@ -37,10 +37,6 @@ class SplashActivity : ComponentActivity() {
             }
         }
 
-
-
-
-
         lifecycleScope.launchWhenCreated {
             delay(2000.milliseconds)
 

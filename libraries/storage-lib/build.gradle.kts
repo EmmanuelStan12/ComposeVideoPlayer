@@ -38,4 +38,6 @@ dependencies {
     implementation(Dependencies.coroutinecore)
     implementation(Dependencies.coroutines_android)
     implementation(Dependencies.timber)
+
+    implementation(project(mapOf("path" to ":libraries:data-lib")))
 }

@@ -51,5 +51,10 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":features:base")))
+    implementation(Dependencies.media3_common)
+    implementation(Dependencies.media3_ui)
+    implementation(Dependencies.media3_player)
+    implementation(Dependencies.media3_datasource)
+    implementation(Dependencies.media3_session)
     addTestDependencies()
 }

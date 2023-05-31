@@ -57,6 +57,7 @@ dependencies {
     implementation(project(mapOf("path" to ":features:home")))
 
     implementation(project(mapOf("path" to ":libraries:ui-base-lib")))
+    implementation(project(mapOf("path" to ":libraries:utils-base-lib")))
     implementation(project(mapOf("path" to ":libraries:room-lib")))
 
 

@@ -104,6 +104,12 @@ val RobotoTypography = Typography(
         fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal
     ),
+    h6 = TextStyle(
+        color = ColorBlackText,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
+        fontStyle = FontStyle.Normal
+    ),
     body1 = TextStyle(
         color = ColorBlackText,
         fontSize = 18.sp,
@@ -119,7 +125,13 @@ val RobotoTypography = Typography(
     caption = TextStyle(
         color = ColorBlackText,
         fontSize = 14.sp,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Normal,
+        fontStyle = FontStyle.Normal
+    ),
+    subtitle1 = TextStyle(
+        color = ColorBlackText,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal
     ),
 )

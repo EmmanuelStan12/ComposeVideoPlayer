@@ -17,6 +17,7 @@ sealed class HomeScreen(
     object Folders: HomeScreen("Folders", icon = Icons.Filled.Folder, route = "composable.folder")
 
     object Offers: HomeScreen("Videos", icon = Icons.Outlined.VideoFile, route = "composable.offer")
+    object VideoList: HomeScreen("Videos", icon = null, route = "composable.video_list/{folder}")
 
 }
 

@@ -1,13 +1,11 @@
 package com.codedev.home
 
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.DisposableEffect
@@ -101,4 +99,15 @@ class HomeActivity: FragmentActivity() {
                 ) == PackageManager.PERMISSION_GRANTED
         }.all { it }
     }
+}
+
+fun Context.getActivity(): FragmentActivity? {
+    var currentContext = this
+    while (currentContext is ContextWrapper) {
+        if (currentContext is FragmentActivity) {
+            return currentContext
+        }
+        currentContext = currentContext.baseContext
+    }
+    return null
 }

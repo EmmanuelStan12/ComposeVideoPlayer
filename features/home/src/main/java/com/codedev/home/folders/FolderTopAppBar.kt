@@ -21,11 +21,6 @@ fun FolderTopAppBar(
 
     TopAppBar(
         title = { Text(text = "Folders") },
-        navigationIcon = {
-            IconButton(onClick = { onNavigate() }) {
-                Icon(imageVector = Icons.Outlined.Menu, contentDescription = "", tint = ColorBlackText)
-            }
-        },
         actions = {
             // search icon
             TopAppBarActionButton(
