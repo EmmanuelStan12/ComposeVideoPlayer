@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "com.freexitnow.context_provider_lib"
-    compileSdk = Depends.compileSDK
+    compileSdk = Dependencies.compileSDK
 
     defaultConfig {
-        minSdk = Depends.minSDK
-        targetSdk = Depends.targetSDK
+        minSdk = Dependencies.minSDK
+        targetSdk = Dependencies.targetSDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -22,7 +22,7 @@ android {
         }
 
         release {
-            isMinifyEnabled = Depends.isMinifyEnabled
+            isMinifyEnabled = Dependencies.isMinifyEnabled
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -36,5 +36,5 @@ android {
 }
 
 dependencies {
-    implementation(Depends.appcompat)
+    implementation(Dependencies.appcompat)
 }

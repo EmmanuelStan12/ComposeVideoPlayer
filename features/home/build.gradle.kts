@@ -3,6 +3,7 @@ import Dependencies.addTestDependencies
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -51,10 +52,13 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":features:base")))
+    implementation(project(mapOf("path" to ":features:video")))
+    implementation(project(mapOf("path" to ":features:music")))
     implementation(Dependencies.media3_common)
     implementation(Dependencies.media3_ui)
     implementation(Dependencies.media3_player)
     implementation(Dependencies.media3_datasource)
     implementation(Dependencies.media3_session)
+    kapt(Dependencies.dagger_kapt)
     addTestDependencies()
 }

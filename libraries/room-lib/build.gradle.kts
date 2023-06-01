@@ -40,4 +40,7 @@ dependencies {
     api(Dependencies.room_runtime)
     kapt(Dependencies.room_kapt)
     implementation(Dependencies.timber)
+
+    implementation(Dependencies.dagger)
+    kapt(Dependencies.dagger_kapt)
 }

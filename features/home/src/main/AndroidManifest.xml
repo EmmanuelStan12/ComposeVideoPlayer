@@ -16,6 +16,22 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".video_player.VideoPlayerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ComposeVideoPlayer"
+            android:screenOrientation="landscape" />
+
+        <service
+            android:name=".VideoPlayerService"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService"/>
+                <action android:name="android.media.browse.MediaBrowserService"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

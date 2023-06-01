@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -65,7 +66,11 @@ dependencies {
     api(project(mapOf("path" to ":libraries:ui-base-lib")))
     api(project(mapOf("path" to ":libraries:room-lib")))
     api(project(mapOf("path" to ":libraries:storage-lib")))
+    api(project(mapOf("path" to ":libraries:context-provider-lib")))
     api(project(mapOf("path" to ":libraries:data-lib")))
+
+    api(Dependencies.dagger)
+    kapt(Dependencies.dagger_kapt)
 
     debugApi(Dependencies.customview)
     debugApi(Dependencies.customviewcontainer)

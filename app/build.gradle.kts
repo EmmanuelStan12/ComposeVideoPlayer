@@ -59,6 +59,7 @@ dependencies {
     implementation(project(mapOf("path" to ":libraries:ui-base-lib")))
     implementation(project(mapOf("path" to ":libraries:utils-base-lib")))
     implementation(project(mapOf("path" to ":libraries:room-lib")))
+    implementation(project(mapOf("path" to ":libraries:context-provider-lib")))
 
 
     implementation(Dependencies.splashscreen)
