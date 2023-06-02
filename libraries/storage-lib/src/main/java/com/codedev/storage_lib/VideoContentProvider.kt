@@ -16,6 +16,7 @@ import android.util.Log
 import com.codedev.data_lib.content_provider.ContentProviderVideo
 import com.codedev.data_lib.models.Folder
 import com.codedev.data_lib.models.Video
+import com.freexitnow.context_provider_lib.ContextProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -95,7 +96,8 @@ object VideoContentProvider {
         }
     }
 
-    suspend fun getVideos(context: Context) = withContext(Dispatchers.IO) {
+    suspend fun getVideos() = withContext(Dispatchers.IO) {
+        val context: Context = ContextProvider.getApplication()
         val contentResolver = context.contentResolver
 
         val projection = arrayOf(
@@ -190,7 +192,8 @@ object VideoContentProvider {
             retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_LOCATION)
     }
 
-    suspend fun getVideoThumbnail(context: Context, videoPath: String): Bitmap? = withContext(Dispatchers.IO) {
+    suspend fun getVideoThumbnail(videoPath: String): Bitmap? = withContext(Dispatchers.IO) {
+        val context: Context = ContextProvider.getApplication()
         val retriever = MediaMetadataRetriever()
         retriever.setDataSource(context, Uri.parse(videoPath))
         val thumbnail = retriever.frameAtTime

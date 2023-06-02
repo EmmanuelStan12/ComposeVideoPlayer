@@ -27,10 +27,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class VideoListViewModel @Inject constructor(
-    private val videoDao: VideoDao,
-    private val queryDao: QueryDao,
-    private val repository: IVideoRepository,
-    private val application: Application
+    private val repository: IVideoRepository
+
 ) : ViewModel() {
 
     private val _currentVideoList: MutableStateFlow<SnapshotStateList<Video>> = MutableStateFlow(
@@ -106,7 +104,6 @@ class VideoListViewModel @Inject constructor(
                 val data = status.data.map {
                     it.copy(
                         bitmap = VideoContentProvider.getVideoThumbnail(
-                            application,
                             it.path
                         )
                     )
@@ -150,7 +147,6 @@ class VideoListViewModel @Inject constructor(
                 val data = status.data.map {
                     it.copy(
                         bitmap = VideoContentProvider.getVideoThumbnail(
-                            application,
                             it.path
                         )
                     )

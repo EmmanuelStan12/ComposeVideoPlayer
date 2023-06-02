@@ -32,7 +32,6 @@ class SplashActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val splashScreen = installSplashScreen()
-            splashScreen.setKeepOnScreenCondition { true }
         }
 
         super.onCreate(savedInstanceState)
@@ -49,8 +48,7 @@ class SplashActivity : FragmentActivity() {
                 ActivityResultContracts.RequestPermission()
             ) { isGranted: Boolean ->
                 if (isGranted) {
-                    // Permission is granted. Continue the action or workflow in your
-                    // app.
+                    launchHomeActivity()
                 } else {
                     // Explain to the user that the feature is unavailable because the
                     // feature requires a permission that the user has denied. At the
@@ -78,6 +76,8 @@ class SplashActivity : FragmentActivity() {
                             fragment.show(supportFragmentManager, fragment::class.java.simpleName)
                         }
                     }
+                } else {
+                    launchHomeActivity()
                 }
             }
 
@@ -105,7 +105,7 @@ class SplashActivity : FragmentActivity() {
                         it.first
                     }.toTypedArray()
                 )
-
+            } else {
                 launchHomeActivity()
             }
 

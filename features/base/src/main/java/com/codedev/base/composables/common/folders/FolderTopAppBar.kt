@@ -8,6 +8,7 @@ import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.*
 import com.codedev.base.TopAppBarActionButton
+import com.codedev.ui_base_lib.ColorBlackBackground
 import com.codedev.ui_base_lib.ColorBlackText
 
 @Composable
@@ -21,6 +22,9 @@ fun FolderTopAppBar(
 
     TopAppBar(
         title = { Text(text = "Folders") },
+        navigationIcon = { IconButton(onClick = onNavigate) {
+            Icon(imageVector = Icons.Outlined.Menu, contentDescription = null, tint = ColorBlackBackground)
+        } },
         actions = {
             // search icon
             TopAppBarActionButton(

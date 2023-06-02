@@ -21,7 +21,7 @@ val ColorSurfaceLight = Color(0xFFFFFFFF)
 val ColorSurfaceDark = Color(0xFFFFFFFF)
 val ColorOnSurface = Color(0xFFFFFFFF)
 val ColorLightGrey = Color(0xFFD3D3D3)
-val ColorGrey = Color(0xFFFFFFFF)
+val ColorGrey = Color.Gray
 
 val LightThemeColors = lightColors(
     primary = ColorPrimary,

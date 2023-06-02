@@ -2,8 +2,8 @@ package com.codedev.video.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.codedev.home.video_player.VideoPlayerViewModel
-import com.codedev.home.videos.VideoListViewModel
+import com.codedev.video.composables.video_player.VideoPlayerViewModel
+import com.codedev.video.composables.video_list.VideoListViewModel
 import javax.inject.Provider
 
 class MVideoListViewModelFactory(

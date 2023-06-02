@@ -25,7 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.codedev.base.TopAppBarActionButton
-import com.codedev.home.R
 import com.codedev.ui_base_lib.ColorBlackText
 import com.codedev.base.R as base_R
 

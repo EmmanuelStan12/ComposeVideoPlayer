@@ -1,6 +1,9 @@
 package com.codedev.video
 
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.ViewModelStore
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -15,11 +18,19 @@ class VideoFeatureImpl: VideoFeatureApi {
 
     override fun registerGraph(
         navGraphBuilder: NavGraphBuilder,
-        navController: NavHostController,
-        modifier: Modifier
+        navController: NavController,
+        modifier: Modifier,
+        onChangeRoute: (String) -> Unit
     ) {
-        navGraphBuilder.composable(route = Graph.VIDEO_GRAPH) {
-            VideoNavigationGraph()
+        navGraphBuilder.composable(
+            route = Graph.VIDEO_GRAPH,
+            arguments = listOf(navArgument("route") { defaultValue = VideoScreens.Folders.route })
+        ) { backStackEntry ->
+            val route = backStackEntry.arguments?.getString("route", VideoScreens.Folders.route)!!
+            VideoNavigationGraph(
+                route = route,
+                onChangeRoute = onChangeRoute
+            )
         }
     }
 

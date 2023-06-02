@@ -1,10 +1,16 @@
 package com.codedev.composevideoplayer
 
 import android.app.Application
+import com.codedev.base._di.BaseFeatureComponent
+import com.codedev.base._di.BaseFeatureComponentProvider
+import com.codedev.base._di.DaggerBaseFeatureComponent
+import com.freexitnow.context_provider_lib.ContextProvider
 import timber.log.Timber
 
 
-class BaseApplication: Application() {
+class BaseApplication: Application(), BaseFeatureComponentProvider {
+
+    private lateinit var baseFeatureComponent: BaseFeatureComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -12,9 +18,16 @@ class BaseApplication: Application() {
         initTimber()
     }
 
+    private fun initializeComponent() {
+        baseFeatureComponent = DaggerBaseFeatureComponent.builder()
+            .applicationContext(applicationContext)
+            .build()
+    }
+
     private fun initDI(){
-//        ContextProvider.setContext(this)
-//        ContextProvider.setContentResolver(contentResolver)
+        ContextProvider.setApplication(this)
+        ContextProvider.setContentResolver(contentResolver)
+        initializeComponent()
     }
 
     private fun initTimber(){
@@ -29,5 +42,9 @@ class BaseApplication: Application() {
                     super.createStackElementTag(element))
             }
         })
+    }
+
+    override fun provideBaseComponent(): BaseFeatureComponent {
+        return baseFeatureComponent
     }
 }

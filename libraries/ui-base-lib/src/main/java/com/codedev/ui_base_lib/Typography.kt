@@ -53,7 +53,7 @@ val Roboto = FontFamily(
         style = FontStyle.Normal
     ),
     Font(
-        R.font.roboto_italic,
+        R.font.roboto_black,
         weight = FontWeight.Black,
         style = FontStyle.Normal
     ),

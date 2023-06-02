@@ -3,11 +3,11 @@ package com.codedev.video.composables.folders
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.codedev.data_lib.Either
 import com.codedev.data_lib.models.Folder
 import com.codedev.data_lib.repositories.VideoRepositoryImpl
+import com.codedev.data_lib.repositories.interfaces.IVideoRepository
 import com.codedev.room_lib.MediaDatabase
 import com.codedev.room_lib.dao.QueryDao
 import com.codedev.room_lib.dao.VideoDao
@@ -19,15 +19,13 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class FolderViewModel(application: Application) : AndroidViewModel(application) {
+class VideoFolderViewModel @Inject constructor(
+    private val repository: IVideoRepository
+) : ViewModel() {
 
     private val dispatcher = Dispatchers.Main
-
-    private val videoDao: VideoDao = MediaDatabase.getInstance(application.applicationContext).getVideoDao()
-    private val queryDao: QueryDao = MediaDatabase.getInstance(application.applicationContext).getQueryDao()
-
-    private val repository = VideoRepositoryImpl(videoDao, queryDao)
 
     private val _currentFolderList: MutableStateFlow<List<Folder>> = MutableStateFlow(emptyList())
     val currentFolderList: StateFlow<List<Folder>>
@@ -69,10 +67,10 @@ class FolderViewModel(application: Application) : AndroidViewModel(application) 
         _folderUiState.emit(FolderVMEvents.GetVideosDataLoading)
 
         val videosData =
-            VideoContentProvider.getVideos(getApplication<Application>().applicationContext)
+            VideoContentProvider.getVideos()
 
         val contentProviderVideos = videosData.second
-        _currentFolderList.value = videosData.first
+        _currentFolderList.emit(videosData.first)
 
         val status = repository.saveVideos(contentProviderVideos)
         when (status) {

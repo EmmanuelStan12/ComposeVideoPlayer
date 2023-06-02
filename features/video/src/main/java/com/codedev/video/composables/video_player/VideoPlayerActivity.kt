@@ -1,13 +1,12 @@
-package com.codedev.home.video_player
+package com.codedev.video.composables.video_player
 
 import android.content.ComponentName
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.media3.common.Player
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionToken
-import com.codedev.home.VideoPlayerService
-import com.codedev.home.databinding.ActivityVideoPlayerBinding
+import com.codedev.video.databinding.ActivityVideoPlayerBinding
+import com.codedev.video.service.VideoPlayerService
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
 

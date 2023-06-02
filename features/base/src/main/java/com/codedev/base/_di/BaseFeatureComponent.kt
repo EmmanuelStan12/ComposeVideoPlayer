@@ -1,8 +1,7 @@
 package com.codedev.base._di
 
-import android.app.Application
-import com.codedev.video.VideoFeatureApi
-import com.freexitnow.context_provider_lib.ContextProvider
+import android.content.Context
+import com.codedev.data_lib.repositories.interfaces.IVideoRepository
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -13,26 +12,13 @@ import javax.inject.Singleton
 @Singleton
 interface BaseFeatureComponent {
 
-    companion object {
-        private var instance: BaseFeatureComponent? = null
-
-        fun getInstance(): BaseFeatureComponent {
-            if (instance == null) {
-                instance = DaggerBaseFeatureComponent.builder()
-                    .application(ContextProvider.getApplication())
-                    .build()
-            }
-
-            return instance as BaseFeatureComponent
-        }
-    }
+    fun getVideoRepository(): IVideoRepository
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(application: Application): Builder
+        fun applicationContext(applicationContext: Context): Builder
         fun build(): BaseFeatureComponent
     }
 
-    fun getVideoFeatureApi(): com.codedev.video.VideoFeatureApi
 }

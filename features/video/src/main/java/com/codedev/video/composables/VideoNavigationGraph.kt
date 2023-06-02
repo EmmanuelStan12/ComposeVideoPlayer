@@ -8,34 +8,60 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.navigation.NavArgument
+import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
 import com.codedev.base.Graph
+import com.codedev.base._di.BaseFeatureComponentProvider
 import com.codedev.ui_base_lib.ColorLightGrey
+import com.codedev.video.composables.folders.FolderComposable
+import com.codedev.video.composables.offers.OfferComposable
+import com.codedev.video.composables.video_list.VideoListComposable
+import com.codedev.video.di.DaggerVideoFeatureComponent
 import com.codedev.video.di.VideoFeatureComponent
 import com.codedev.video.navigation.VideoScreens
 import com.codedev.video.navigation.VideoScreens.Companion.bottomBarItems
+import timber.log.Timber
 
 @Composable
-fun VideoNavigationGraph() {
+fun VideoNavigationGraph(
+    route: String,
+    onChangeRoute: (String) -> Unit
+) {
 
     val navController = rememberNavController()
-    val scope = rememberCoroutineScope()
-
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     val currentRoute = currentDestination?.route
     val scaffoldState = rememberScaffoldState()
-    val context = LocalContext.current
-    val lifecycleOwner = LocalLifecycleOwner.current
+
+    val applicationContext = LocalContext.current.applicationContext
+
+    val videoFeatureComponent = DaggerVideoFeatureComponent
+        .builder()
+        .baseFeatureComponent((applicationContext as BaseFeatureComponentProvider).provideBaseComponent())
+        .build()
+
+    LaunchedEffect(key1 = currentRoute) {
+        if (currentRoute != null) {
+            onChangeRoute(currentRoute)
+        }
+    }
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -78,19 +104,30 @@ fun VideoNavigationGraph() {
     ) { _ ->
         NavHost(
             navController = navController,
-            startDestination = VideoScreens.Folders.route,
-            route = Graph.VIDEO_GRAPH
+            startDestination = route
         ) {
-            composable(route = VideoScreens.Folders.route) {
-
+            composable(
+                route = VideoScreens.Folders.route
+            ) {
+                val viewModel = remember(key1 = videoFeatureComponent) {
+                    videoFeatureComponent.getVideoFolderViewModel()
+                }
+                FolderComposable(navController = navController, viewModel = viewModel)
             }
 
             composable(route = VideoScreens.Offers.route) {
-
+                OfferComposable()
             }
 
-            composable(route = VideoScreens.VideoList.route) {
-
+            composable(
+                route = VideoScreens.VideoList.route,
+                arguments = listOf(navArgument("folder") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val viewModel = remember {
+                    videoFeatureComponent.getVideoListViewModel()
+                }
+                val folder = backStackEntry.arguments?.getString("folder") ?: ""
+                VideoListComposable(folder = folder, viewModel = viewModel, navController = navController)
             }
         }
     }

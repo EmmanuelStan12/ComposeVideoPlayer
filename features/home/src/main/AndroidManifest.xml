@@ -18,7 +18,7 @@
         </activity>
 
         <activity
-            android:name=".video_player.VideoPlayerActivity"
+            android:name="com.codedev.video.composables.video_player.VideoPlayerActivity"
             android:exported="false"
             android:theme="@style/Theme.ComposeVideoPlayer"
             android:screenOrientation="landscape" />

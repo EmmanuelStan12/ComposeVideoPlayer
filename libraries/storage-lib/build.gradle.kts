@@ -40,4 +40,5 @@ dependencies {
     implementation(Dependencies.timber)
 
     implementation(project(mapOf("path" to ":libraries:data-lib")))
+    implementation(project(mapOf("path" to ":libraries:context-provider-lib")))
 }

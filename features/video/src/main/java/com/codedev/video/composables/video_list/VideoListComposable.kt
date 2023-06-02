@@ -33,7 +33,7 @@ import timber.log.Timber
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
 @Composable
-fun VideoComposable(
+fun VideoListComposable(
     folder: String,
     viewModel: VideoListViewModel,
     navController: NavController

@@ -11,12 +11,14 @@ import com.codedev.feature_api.FeatureApi
 fun NavGraphBuilder.register(
     featureApi: FeatureApi,
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onChangeRoute: (String) -> Unit
 ) {
     featureApi.registerGraph(
         navGraphBuilder = this,
         navController = navController,
-        modifier = modifier
+        modifier = modifier,
+        onChangeRoute = onChangeRoute
     )
 }
 

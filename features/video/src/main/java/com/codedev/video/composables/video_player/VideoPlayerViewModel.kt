@@ -1,13 +1,9 @@
-package com.codedev.home.video_player
+package com.codedev.video.composables.video_player
 
 import androidx.lifecycle.ViewModel
 import com.codedev.data_lib.Either
 import com.codedev.data_lib.models.Video
 import com.codedev.data_lib.repositories.interfaces.IVideoRepository
-import com.codedev.home.videos.VideoListViewModel
-import com.codedev.room_lib.dao.QueryDao
-import com.codedev.room_lib.dao.VideoDao
-import com.codedev.storage_lib.VideoContentProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
